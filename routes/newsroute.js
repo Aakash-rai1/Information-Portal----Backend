@@ -2,9 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 //Import Controller
-const { addnews } = require("../controller/newsauth");
+const { addnews, showsingle, showNews } = require("../controller/newsauth");
 
 // Routes;
-router.post("/addnews", addnews);
+router.post("/admin/addnews", addnews);
+router.get("/showsingle/news/:id", showsingle);
+router.get("/show/news", showNews);
 
 module.exports = router;

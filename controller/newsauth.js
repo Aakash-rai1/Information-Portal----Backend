@@ -30,3 +30,23 @@ exports.addnews = (req, res) => {
     });
   console.log("News Sucessfully Added");
 };
+
+//display single user
+exports.showsingle = (req, res) => {
+  const id = req.params.id;
+  News.findOne({ _id: id })
+    .then(function (data) {
+      res.status(200).json(data);
+    })
+
+    .catch(function (e) {
+      res.status(500).json({ message: e });
+    });
+};
+
+//show all users
+exports.showNews = (req, res) => {
+  News.find().then(function (data) {
+    res.send({ data: data, success: true });
+  });
+};

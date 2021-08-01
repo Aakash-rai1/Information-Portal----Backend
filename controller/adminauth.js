@@ -117,3 +117,23 @@ exports.updateAdmin = (req, res) => {
       res.status(400).json({ success: false, error: "Something went wrong" });
     });
 };
+
+//display single user
+exports.showsingle = (req, res) => {
+  const id = req.params.id;
+  Admin.findOne({ _id: id })
+    .then(function (data) {
+      res.status(200).json(data);
+    })
+
+    .catch(function (e) {
+      res.status(500).json({ message: e });
+    });
+};
+
+//show all users
+exports.showUsers = (req, res) => {
+  Admin.find().then(function (data) {
+    res.send({ data: data, success: true });
+  });
+};
