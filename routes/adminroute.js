@@ -10,6 +10,7 @@ const {
   updateAdmin,
   showsingle,
   showUsers,
+  deleteUser,
 } = require("../controller/adminauth");
 
 // Routes;
@@ -20,5 +21,6 @@ router.get("/adminchecklogin", aauth, checklogin);
 router.put("/admin/updateAdmin/:_id", aauth, updateAdmin);
 router.get("/showsingle/admin/:id", showsingle);
 router.get("/show/admins", showUsers);
+router.delete("/delete/admin/:id", deleteUser);
 
 module.exports = router;

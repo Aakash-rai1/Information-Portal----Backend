@@ -137,3 +137,10 @@ exports.showUsers = (req, res) => {
     res.send({ data: data, success: true });
   });
 };
+
+//deleteuser
+exports.deleteUser = (req, res) => {
+  Admin.deleteOne({ _id: req.params.id })
+    .then((suc) => res.send({ mesage: "Admin deleted successfully" }))
+    .catch((err) => res.send({ message: "failed to delete admin" }));
+};

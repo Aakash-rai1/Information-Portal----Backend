@@ -7,7 +7,7 @@ var ObjectID = require("mongodb").ObjectID;
 //signup
 exports.signup = (req, res) => {
   console.log("here");
-
+  const college_id = req.body.college_id;
   const fname = req.body.fname;
   const lname = req.body.lname;
   const email = req.body.email;
@@ -23,6 +23,7 @@ exports.signup = (req, res) => {
   bcrypt.hash(password, 10, function (err, hash) {
     console.log(hash);
     const me = new User({
+      college_id: college_id,
       fname: fname,
       lname: lname,
       email: email,

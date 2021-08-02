@@ -15,6 +15,10 @@ const user = new mongoose.Schema({
     require: true,
     unique: true,
   },
+  college_id: {
+    type: Number,
+    unique: true,
+  },
   password: {
     type: String,
   },
@@ -24,6 +28,7 @@ const user = new mongoose.Schema({
     trim: true,
     default: "no-image",
   },
+
   tokens: [
     {
       token: {

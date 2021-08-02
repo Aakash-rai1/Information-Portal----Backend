@@ -20,7 +20,7 @@ router.post("/login", login);
 router.delete("/logout", auth, logout);
 router.get("/checklogin", auth, checklogin);
 router.put("/updateUser/:_id", auth, updateUser);
-router.delete("/delete/user/:id", auth, deleteUser);
+router.delete("/delete/user/:id", deleteUser);
 router.get("/showsingle/user/:id", showsingle);
 router.get("/show/users", showUsers);
 

@@ -1,23 +1,22 @@
-const News = require("../models/newsmodel"); //import result model
+const Events = require("../models/eventsmodel"); //import result model
 
 var ObjectID = require("mongodb").ObjectID;
 
-exports.addnews = (req, res) => {
+exports.addevents = (req, res) => {
   const title = req.body.title;
   const content = req.body.content;
 
-  const newNews = new News({
+  const ev = new Events({
     title: title,
     content: content,
   });
 
-  newNews
-    .save()
+  ev.save()
     .then((res) => {
       // success insert
       res.status(201).json({
         success: true,
-        message: " News added successful",
+        message: "Events added successful",
       });
       console.log("success");
     })
@@ -28,13 +27,13 @@ exports.addnews = (req, res) => {
         message: err,
       });
     });
-  console.log("News Sucessfully Added");
+  console.log("Evnets Sucessfully Added");
 };
 
 //display single user
 exports.showsingle = (req, res) => {
   const id = req.params.id;
-  News.findOne({ _id: id })
+  Events.findOne({ _id: id })
     .then(function (data) {
       res.status(200).json(data);
     })
@@ -45,15 +44,15 @@ exports.showsingle = (req, res) => {
 };
 
 //show all users
-exports.showNews = (req, res) => {
-  News.find().then(function (data) {
+exports.showEvents = (req, res) => {
+  Events.find().then(function (data) {
     res.send({ data: data, success: true });
   });
 };
 
 //deleteuser
-exports.deleteNews = (req, res) => {
-  News.deleteOne({ _id: req.params.id })
+exports.deleteEvent = (req, res) => {
+  Events.deleteOne({ _id: req.params.id })
     .then((suc) => res.send({ mesage: "Admin deleted successfully" }))
     .catch((err) => res.send({ message: "failed to delete admin" }));
 };

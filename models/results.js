@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const results = new mongoose.Schema({
+  user_id: {
+    type: Schema.ObjectId,
+    ref: "User",
+  },
   module: {
     type: String,
   },
