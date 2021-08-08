@@ -12,7 +12,7 @@ const {
   deleteUser,
   showsingle,
   showUsers,
-} = require("../controller/userauth");
+} = require("../controller/usercontroller");
 
 // Routes;
 router.post("/register", signup);

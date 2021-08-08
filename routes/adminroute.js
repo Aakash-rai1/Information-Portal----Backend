@@ -11,7 +11,7 @@ const {
   showsingle,
   showUsers,
   deleteUser,
-} = require("../controller/adminauth");
+} = require("../controller/admincontroller");
 
 // Routes;
 router.post("/admin/add", signup);

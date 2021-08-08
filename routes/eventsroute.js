@@ -7,7 +7,7 @@ const {
   showsingle,
   showEvents,
   deleteEvent,
-} = require("../controller/eventsauth");
+} = require("../controller/eventscontroller");
 
 // Routes;
 router.post("/admin/addevent", addevents);

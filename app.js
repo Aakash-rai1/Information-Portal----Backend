@@ -1,7 +1,14 @@
 const express = require("express"); //third party package
-const cors = require("cors"); //third party package
+const cors = require("cors");
+const path = require("path");
+const bodyparser = require("body-parser");
+
+//third party package
 require("dotenv").config(); //for env variables
 const app = express();
+const publicdirectory = path.join(__dirname, "public");
+app.use(express.static(publicdirectory));
+
 require("colors");
 
 require("./database/database");
@@ -13,6 +20,8 @@ const newsAuth = require("./routes/newsroute");
 const eventsAuth = require("./routes/eventsroute");
 
 app.use(express.json());
+app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyparser.json());
 app.use(cors());
 app.use(userAuth);
 app.use(adminAuth);

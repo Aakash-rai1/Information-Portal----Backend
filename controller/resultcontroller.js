@@ -38,7 +38,7 @@ exports.addresult = (req, res) => {
 };
 
 exports.findResultByUserId = async (req, res) => {
-  Results.find({ user_id: req.params.user_id })
+  Results.findOne({ user_id: req.params.user_id })
     .populate("user_id")
     .then(function (result) {
       console.log(result);
@@ -48,4 +48,11 @@ exports.findResultByUserId = async (req, res) => {
       console.log(e);
       res.status(404).json({ message: "Something went Wrong!!" });
     });
+};
+
+//deleteuser
+exports.deleteResult = (req, res) => {
+  Results.deleteOne({ _id: req.params.id })
+    .then((suc) => res.send({ mesage: "Result deleted successfully" }))
+    .catch((err) => res.send({ message: "failed to delete result" }));
 };
