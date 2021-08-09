@@ -5,10 +5,14 @@ var ObjectID = require("mongodb").ObjectID;
 exports.addevents = (req, res) => {
   const title = req.body.title;
   const content = req.body.content;
+  const date = req.body.date;
+  const location = req.body.location;
 
   const ev = new Events({
     title: title,
     content: content,
+    date: date,
+    location: location,
   });
 
   ev.save()
@@ -53,6 +57,6 @@ exports.showEvents = (req, res) => {
 //deleteuser
 exports.deleteEvent = (req, res) => {
   Events.deleteOne({ _id: req.params.id })
-    .then((suc) => res.send({ mesage: "Admin deleted successfully" }))
-    .catch((err) => res.send({ message: "failed to delete admin" }));
+    .then((suc) => res.send({ mesage: "Events deleted successfully" }))
+    .catch((err) => res.send({ message: "failed to delete events" }));
 };
