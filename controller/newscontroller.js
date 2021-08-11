@@ -19,20 +19,13 @@ exports.addnews = (req, res) => {
     const Post = new News(postdata);
 
     Post.save()
-      .then((res) => {
-        // success insert
-        res.status(201).json({
-          success: true,
-          message: " News added successful",
-        });
-        console.log("success");
+      .then((result) => {
+        res
+          .status(200)
+          .json({ success: true, message: "News added successfully" });
       })
       .catch((err) => {
-        console.log("here");
-        res.status(500).json({
-          success: true,
-          message: err,
-        });
+        res.status(500).json({ success: false, message: "Failed" });
       });
   });
 };
