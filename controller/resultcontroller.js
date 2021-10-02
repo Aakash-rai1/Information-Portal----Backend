@@ -2,25 +2,47 @@ const Results = require("../models/results"); //import result model
 
 var ObjectID = require("mongodb").ObjectID;
 
+// Add Result
 exports.addresult = (req, res) => {
-  const module = req.body.module;
-  // const module_id = req.body.module_id;
-  const marks_obtained = req.body.marks_obtained;
-  const total = req.body.total;
-  const user_id = ObjectID(req.body.user_id);
+  const {
+    user_id,
+    english,
+    nepali,
+    math,
+    opt_math,
+    account,
+    social,
+    science,
+    health_population,
+  } = req.body;
+
+  const totalScore =
+    +english +
+    +nepali +
+    +math +
+    +opt_math +
+    +account +
+    +social +
+    +science +
+    +health_population;
+  console.log(totalScore);
 
   const newResult = new Results({
-    module: module,
-    // module_id: module_id,
-    marks_obtained: marks_obtained,
-    user_id: user_id,
-    total: total,
+    user_id,
+    english,
+    nepali,
+    math,
+    opt_math,
+    account,
+    social,
+    science,
+    health_population,
+    total: totalScore,
   });
 
   newResult
     .save()
     .then((result) => {
-      // success insert
       res.status(201).json({
         success: true,
         message: "Result added successful",
@@ -34,12 +56,11 @@ exports.addresult = (req, res) => {
         message: err,
       });
     });
-  console.log("Result Sucessfully Added");
 };
 
 exports.findResultByUserId = async (req, res) => {
-  Results.findOne({ user_id: req.params.user_id })
-    .populate("user_id")
+  Results.find({ user_id: req.params.user_id })
+    .populate("user_id", "-tokens -password")
     .then(function (result) {
       console.log(result);
       res.status(200).json({ success: true, message: result });

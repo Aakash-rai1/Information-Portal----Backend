@@ -18,6 +18,7 @@ const adminAuth = require("./routes/adminroute");
 const resultAuth = require("./routes/resultroute");
 const newsAuth = require("./routes/newsroute");
 const eventsAuth = require("./routes/eventsroute");
+const notification = require("./routes/notificationroute");
 
 app.use(express.json());
 app.use(bodyparser.urlencoded({ extended: true }));
@@ -28,6 +29,7 @@ app.use(adminAuth);
 app.use(resultAuth);
 app.use(newsAuth);
 app.use(eventsAuth);
+app.use(notification);
 
 const port = process.env.PORT;
 

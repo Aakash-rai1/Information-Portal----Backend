@@ -1,4 +1,4 @@
-const Events = require("../models/eventsmodel"); //import result model
+const Events = require("../models/exammodel"); //import result model
 
 var ObjectID = require("mongodb").ObjectID;
 
@@ -16,11 +16,11 @@ exports.addevents = (req, res) => {
   });
 
   ev.save()
-    .then((res) => {
+    .then((ressult) => {
       // success insert
       res.status(201).json({
         success: true,
-        message: "Events added successful",
+        message: "Events added successfull",
       });
       console.log("success");
     })
@@ -56,6 +56,8 @@ exports.showEvents = (req, res) => {
 
 //deleteuser
 exports.deleteEvent = (req, res) => {
+  // c;
+  console.log("here");
   Events.deleteOne({ _id: req.params.id })
     .then((suc) => res.send({ mesage: "Events deleted successfully" }))
     .catch((err) => res.send({ message: "failed to delete events" }));

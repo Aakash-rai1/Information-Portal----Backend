@@ -6,8 +6,6 @@ var ObjectID = require("mongodb").ObjectID;
 
 //signup
 exports.signup = (req, res) => {
-  console.log("here");
-  const college_id = req.body.college_id;
   const fname = req.body.fname;
   const lname = req.body.lname;
   const email = req.body.email;
@@ -23,28 +21,29 @@ exports.signup = (req, res) => {
   bcrypt.hash(password, 10, function (err, hash) {
     console.log(hash);
     const me = new User({
-      college_id: college_id,
       fname: fname,
       lname: lname,
       email: email,
       password: hash,
     });
+    console.log(me);
     me.save()
-      .then(function (result) {
+      .then((result) => {
         // success insert
         res.status(201).json({
           success: true,
+          result: result,
           message: "Registered success",
         });
         console.log("success");
       })
       .catch(function (err) {
+        console.log(err);
         res.status(500).json({
           success: false,
           message: err,
         });
       });
-    console.log("Sucessfully Registered");
   });
 };
 

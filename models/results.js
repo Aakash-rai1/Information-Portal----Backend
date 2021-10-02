@@ -6,13 +6,28 @@ const results = new mongoose.Schema({
     type: Schema.ObjectId,
     ref: "User",
   },
-  module: {
+  english: {
     type: String,
   },
-  module_id: {
+  nepali: {
     type: String,
   },
-  marks_obtained: {
+  math: {
+    type: String,
+  },
+  socail: {
+    type: String,
+  },
+  science: {
+    type: String,
+  },
+  opt_math: {
+    type: String,
+  },
+  health_population: {
+    type: String,
+  },
+  account: {
     type: String,
   },
   total: {

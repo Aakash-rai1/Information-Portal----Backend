@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const events = new mongoose.Schema({
+const exams = new mongoose.Schema({
   title: {
     type: String,
   },
@@ -15,4 +15,4 @@ const events = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("events", events);
+module.exports = mongoose.model("Exam", exams);
